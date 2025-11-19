@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="description" content="Smokey’s offers premium smoked chicken and beef in Polokwane. Explore products, blog, and contact us.">
+  <meta name="keywords" content="smoked chicken, smoked beef, Polokwane, organic meats, local food">
+  <meta name="author" content="Smokey’s Smoked Chicken and Beef">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enquiry | Smokey’s Smoked Chicken and Beef</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body style="color: black; background: white;">
+
+  <header>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <h1>Smokey’s</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h2>Make an Enquiry</h2>
+    <form id="enquiryForm">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <select name="type" required>
+        <option value="">Select enquiry type</option>
+        <option value="product">Product Availability</option>
+        <option value="volunteer">Volunteer</option>
+        <option value="sponsor">Sponsorship</option>
+      </select>
+      <input type="text" name="item" placeholder="Product or Service (optional)" />
+      <input type="date" name="date" required />
+      <button type="submit">Submit Enquiry</button>
+    </form>
+
+    <div id="response" style="margin-top: 20px; font-weight: bold;"></div>
+  </main>
+
+  <footer>
+    <p>Follow us on 
+      <a href="#">Facebook</a>, 
+      <a href="#">Instagram</a>, 
+      <a href="#">Twitter</a>
+    </p>
+    <p>Contact: info@smokeysmeats.com | +27 76 755 1684</p>
+    <p>Subscribe to our newsletter for recipes and updates</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("enquiryForm");
+    const output = document.getElementById("response");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const type = form.elements["type"].value;
+      const item = form.elements["item"].value.trim();
+      const date = form.elements["date"].value;
+
+      let message = "";
+
+      if (type === "product") {
+        message = item
+          ? `Yes, ${item} is available. You can collect it on ${date}.`
+          : `Selected products are available. Collection date: ${date}.`;
+      } else if (type === "volunteer") {
+        message = `Thank you for your interest! Volunteer slots are open. We'll contact you with details.`;
+      } else if (type === "sponsor") {
+        message = `Thanks for considering sponsorship! We'll email you our proposal shortly.`;
+      } else {
+        message = `Please select a valid enquiry type.`;
+      }
+
+      output.textContent = message;
+    });
+  </script>
+
+</body>
+</html>

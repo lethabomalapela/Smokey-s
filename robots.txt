@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://LAPPIES852.github.io/Part3/sitemap.xml

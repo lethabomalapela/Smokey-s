@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="css/styles.css">
+  <meta name="description" content="Smokey’s offers premium smoked chicken and beef in Polokwane. Explore products, blog, and contact us.">
+  <meta name="keywords" content="smoked chicken, smoked beef, Polokwane, organic meats, local food">
+  <meta name="author" content="Smokey’s Smoked Chicken and Beef">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us | Smokey’s Smoked Chicken and Beef</title>
@@ -9,7 +13,7 @@
 
   <header>
     <div style="display: flex; justify-content: space-between; align-items: center;">
-      <h2>Smokey’s</h2>
+      <h1>Smokey’s</h1>
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -23,7 +27,7 @@
   </header>
 
   <main class="contact-section">
-    <h1>Get in Touch</h1>
+    <h2>Get in Touch</h2>
     <p>We’d love to hear from you! Whether you have a question, feedback, or just want to say hello, fill out the form below and we’ll get back to you soon.</p>
 
     <form action="mailto:info@smokeysmeats.com" method="POST" enctype="text/plain">
@@ -55,6 +59,30 @@
     <p>Contact: info@smokeysmeats.com | +27 76 755 1684</p>
     <p>Subscribe to our newsletter for recipes and updates</p>
   </footer>
+  
+  <script>
+	const form = document.querySelector("form");
 
+	form.addEventListener("submit", (e) => {
+	  const name = form.name.value.trim();
+	  const email = form.email.value.trim();
+	  const phone = form.phone.value.trim();
+	  const message = form.message.value.trim();
+
+	  let errors = [];
+
+	  if (name.length < 3) errors.push("Name must be at least 3 characters.");
+	  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) errors.push("Enter a valid email.");
+	  if (phone && !/^\+?\d{7,15}$/.test(phone) && phone.length < 9) errors.push("Enter a valid phone number.");
+	  if (message.length < 10) errors.push("Message must be at least 10 characters.");
+
+	  if (errors.length) {
+		alert(errors.join("\n"));
+		e.preventDefault();
+	  }
+	});
+  </script>
+
+  
 </body>
 </html>
